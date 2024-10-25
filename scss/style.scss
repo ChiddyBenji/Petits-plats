@@ -1,0 +1,333 @@
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin full-width {
+    width: 100%;
+    height: auto;
+}
+
+@mixin select {
+    .custom-select {
+        position: relative;
+        display: inline-block;
+        width: 50%;
+
+        select {
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ffffff;
+            font-size: 16px;
+            background-color: white;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 100%;
+            padding-right: 30px;
+            font-family: Manrope, sans-serif;
+        }
+
+        i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #000;
+            pointer-events: none;
+        }
+    }
+}
+
+.main-header {
+    @include flex-center;
+    @include full-width;
+    height: 80vh;
+    position: relative;
+    background-color: black;
+
+    nav {
+        position: absolute;
+        top: 2em;
+        left: 10em;
+        @include flex-center;
+        padding: 20px;
+
+        img {
+            z-index: 200;
+            width: 15em;
+            height: auto;
+        }
+    }
+
+    img {
+        @include full-width;
+        height: auto;
+        max-height: 100%;
+        object-fit: cover;
+        position: absolute;
+        z-index: 100;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 150;
+    }
+
+    .contain-filter {
+        @include full-width;
+        @include flex-center;
+        flex-direction: column;
+        z-index: 300;
+
+        .contain-h1 {
+            @include full-width;
+            @include flex-center;
+            height: 20vh;
+
+            h1 {
+                color: #FFD15B;
+                font-size: 44px;
+                font-family: "Anton", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+                line-height: 66.24px;
+                text-transform: uppercase;
+                text-align: center;
+            }
+        }
+
+        .filter {
+            @include full-width;
+            @include flex-center;
+            height: 15vh;
+            padding: 20px;
+
+            form {
+                @include flex-center;
+                width: 50%;
+                position: relative;
+
+                input {
+                    flex: 1;
+                    padding: 25px;
+                    border: 1px solid #ccc;
+                    border-radius: 8px;
+                    font-size: 16px;
+                }
+
+                button {
+                    @include flex-center;
+                    position: absolute;
+                    right: 0;
+                    top: 11px;
+                    padding: 0 15px;
+                    background: #1B1B1B;
+                    color: white;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    margin-right: 20px;
+                    height: 3em;
+
+                    i {
+                        margin: 0;
+                    }
+
+                    &:hover {
+                        background-color: #f0c04d;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.contain-filter-recette {
+    @include flex-center;
+    @include full-width;
+    height: 20vh;
+    background-color: rgb(235, 234, 234);
+
+
+    .first-flex,
+    .second-flex,
+    .third-flex {
+        @include flex-center;
+        width: 30%;
+        height: 100%;
+        padding: 10px;
+        @include select;
+        margin-right: -120px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .fourth-flex {
+        @include flex-center;
+        justify-content: right;
+        height: 100%;
+        width: 70%;
+        padding: 10px;
+
+        p {
+            font-size: 21px;
+            font-family: "Anton", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            line-height: 66.24px;
+            text-align: center;
+            margin-right: 100px;
+        }
+    }
+}
+
+.contain-cards {
+    @include full-width;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    gap: 1em;
+    margin-top: 2em;
+
+    .cards {
+        height: auto;
+        width: 380px;
+        border-radius: 21px;
+        margin-bottom: 1em;
+        
+
+        .contain-img-cards {
+            width: 100%;
+            height: 35%;
+            border-radius: 21px 21px 0 0;
+
+            img {
+                width: 100%;
+                height: 253px;
+                object-fit: cover;
+                border-radius: 21px 21px 0 0;
+            }
+        }
+
+        .contain-text-cards {
+            @include flex-center;
+            width: 100%;
+            /* height: 65%; */
+            background-color: #eeeeee;
+            border-radius: 0 0 21px 21px;
+            flex-direction: column;
+
+            .text-cards-first {
+                display: flex;
+                flex-direction: column;
+                /* height: 50%; */
+                padding: 1.2em;
+
+                h2 {
+                    font-family: "Anton", sans-serif;
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 27.1px;
+                }
+
+                h3 {
+                    font-family: Manrope, sans-serif;
+                    font-weight: 700;
+                    font-size: 12px;
+                    line-height: 16.39px;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                    margin-left: 8px !important;
+                    color: #7A7A7A;
+                }
+
+                p {
+                    font-family: Manrope, sans-serif;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 19.12px;
+                }
+
+                h2,
+                h3,
+                p {
+                    margin: 0.5em;
+                }
+            }
+
+            .text-cards-second {
+                display: flex;
+                flex-direction: column;
+                /* height: 50%; */
+                width: 85%;
+                margin-bottom: 2em;
+
+                h3 {
+                    font-family: Manrope, sans-serif;
+                    font-weight: 700;
+                    font-size: 12px;
+                    line-height: 16.39px;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                    color: #7A7A7A;
+                    text-align: left !important;
+                    margin-bottom: 0;
+                }
+
+                .contain-grids-cards {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    width: 100%;
+                    height: auto;
+
+                    .grid-cards {
+                        h4 {
+                            font-family: Manrope, sans-serif;
+                            font-weight: 700;
+                            font-size: 12px;
+                            line-height: 19.12px;
+                            margin-bottom: 0;
+                        }
+
+                        p {
+                            font-family: Manrope, sans-serif;
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 19.12px;
+                            color: #7A7A7A;
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1600px) {
+    .contain-cards {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 1200px) {
+    .contain-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
