@@ -1,6 +1,11 @@
 body {
     margin: 0;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(235, 234, 234);
 }
 
 @mixin flex-center {
@@ -16,12 +21,15 @@ body {
 
 @mixin select {
     .custom-select {
-        position: relative;
-        display: inline-block;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         width: 50%;
+        background-color: #fff;
 
-        select {
-            padding: 15px;
+        .select-box {
+            padding-left: 15px;
             border-radius: 8px;
             border: 1px solid #ffffff;
             font-size: 16px;
@@ -30,18 +38,73 @@ body {
             -webkit-appearance: none;
             -moz-appearance: none;
             width: 100%;
-            padding-right: 30px;
             font-family: Manrope, sans-serif;
-        }
+            position: relative;
 
-        i {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            font-size: 16px;
-            color: #000;
-            pointer-events: none;
+            p {
+                cursor: pointer;
+            }
+
+            i {
+                position: absolute;
+                /* top: 25%; */
+                top: 1.5em;
+                right: 1em;
+                transform: translateY(-50%);
+                font-size: 16px;
+                color: #000;
+                pointer-events: none;
+
+            }
+
+            &.open i {
+                transform: rotate(180deg);
+                top: 1.2em;
+            }
+
+
+            input {
+                width: 85%;
+                height: auto;
+                display: none;
+                margin-bottom: 1em;
+            }
+
+            .options-container {
+                width: 100%;
+                /* height: auto; */
+                background-color: white;
+                z-index: 2000;
+                display: none;
+                flex-direction: column;
+                /* Pour afficher les options sous forme de colonne */
+                max-height: 200px;
+                overflow-y: auto;
+
+
+
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    width: 95%;
+                    margin-bottom: 0.5em;
+                    margin-top: 0;
+
+                    li {
+                        width: 90%;
+                        height: auto;
+                        cursor: pointer;
+                        padding-top: 5px;
+                        padding-bottom: 5px;
+
+                        &:hover {
+                            background-color: #FFD15B;
+                            border-radius: 3px;
+                            padding-left: 5px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -159,7 +222,7 @@ body {
 .contain-filter-recette {
     @include flex-center;
     @include full-width;
-    height: 20vh;
+    height: auto;
     background-color: rgb(235, 234, 234);
 
 
@@ -197,24 +260,68 @@ body {
     }
 }
 
+.contain-tags {
+    @include full-width;
+    @include flex-center;
+    justify-content: start;
+    width: 92.5%;
+    flex-wrap: wrap;
+    
+    .tags {
+        @include flex-center;
+        justify-content: space-evenly;
+        width: auto;
+        height: 47px;
+        border-radius: 8px;
+        background-color: #f0c04d;
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        margin-left: 2em;
+        margin-top: 1em;
+
+        p {
+            font-family: Manrope, sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19.12px;
+        }
+
+        i {
+            margin-left: 3em;
+            cursor: pointer;
+        }
+    }
+}
+
 .contain-cards {
     @include full-width;
+    width: 93.5%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-items: center;
     gap: 1em;
-    margin-top: 2em;
+    margin-top: 2.5em;
+    background-color: rgb(235, 234, 234);
+
+    .no-results-message {
+        @include full-width;
+        @include flex-center;
+        font-size: 20px;
+        font-weight: 500;
+        font-family: Manrope, sans-serif;
+        margin-bottom: 2em;
+        width: 48em;
+    }
 
     .cards {
         height: auto;
         width: 380px;
         border-radius: 21px;
         margin-bottom: 1em;
-        
+
 
         .contain-img-cards {
             width: 100%;
-            height: 35%;
             border-radius: 21px 21px 0 0;
 
             img {
@@ -229,9 +336,10 @@ body {
             @include flex-center;
             width: 100%;
             /* height: 65%; */
-            background-color: #eeeeee;
+            background-color: #fff;
             border-radius: 0 0 21px 21px;
             flex-direction: column;
+            margin-top: -0.3em !important;
 
             .text-cards-first {
                 display: flex;
