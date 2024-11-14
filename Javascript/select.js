@@ -3,6 +3,16 @@ import recipes from "./recipes.js";  // Importation de vos recettes
 import displayRecipes from "./recette.js";  // Importation de la fonction d'affichage des recettes
 import { updateRecipeCount } from './recette.js';  // Importation de la fonction pour mettre à jour le compte des recettes
 
+export function closeAllSelects() {
+    selectBoxes.forEach(box => {
+        const boxInput = box.querySelector('input');
+        const boxOptionsContainer = box.querySelector('.options-container');
+        boxInput.style.display = 'none';
+        boxOptionsContainer.style.display = 'none';
+        box.classList.remove('open');
+    });
+}
+
 // Fonction pour peupler les options du menu déroulant en fonction des valeurs uniques
 function populateOptionsForSelectBox(selectBox, uniqueValues) {
     const optionsContainer = selectBox.querySelector('.options-container');
@@ -24,9 +34,9 @@ function populateOptionsForSelectBox(selectBox, uniqueValues) {
 
             // Met à jour les options des autres menus en cascade
             applyCascadeFilter();
-            closeAllSelects(); // Ferme tous les menus après la sélection
+            
         });
-
+        
         ul.appendChild(li);
     });
 }
@@ -166,15 +176,8 @@ selectBoxes.forEach(selectBox => {
         }
     });
 
-    function closeAllSelects() {
-        selectBoxes.forEach(box => {
-            const boxInput = box.querySelector('input');
-            const boxOptionsContainer = box.querySelector('.options-container');
-            boxInput.style.display = 'none';
-            boxOptionsContainer.style.display = 'none';
-            box.classList.remove('open');
-        });
-    }
+    closeAllSelects();
+    
 });
 
 // Écouteur de l'input de recherche global (filtre des recettes)

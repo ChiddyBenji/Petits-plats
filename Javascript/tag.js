@@ -24,5 +24,7 @@ export function createTag(name) {
     tagDiv.appendChild(closeIcon);
     containTags.appendChild(tagDiv);
 
+    
     applyMainFilter(); // Filtre les recettes lorsque le tag est créé
+    
 }
