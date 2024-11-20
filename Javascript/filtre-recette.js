@@ -9,15 +9,14 @@ export function applyMainFilter() {
     const filterText = filterInput.value.toLowerCase();
     const tags = Array.from(document.querySelectorAll('.tags p')).map(tag => tag.textContent.toLowerCase());
 
-    console.log("Filtrage par texte :", filterText); // Log du texte de recherche
+
     let filteredRecipes = recipes.filter(recipe =>
         recipe.name.toLowerCase().includes(filterText) ||
         recipe.description.toLowerCase().includes(filterText) ||
         recipe.ingredients.some(ing => ing.ingredient.toLowerCase().includes(filterText))
     );
 
-    // Log du nombre de recettes après filtrage
-    console.log("Nombre de recettes après filtrage principal :", filteredRecipes.length);
+
 
     filteredRecipes = filteredRecipes.filter(recipe => {
         return tags.every(tag =>
@@ -28,8 +27,7 @@ export function applyMainFilter() {
         );
     });
 
-    // Log après filtrage par tags
-    console.log("Nombre de recettes après filtrage par tags :", filteredRecipes.length);
+
 
     if (filteredRecipes.length === 0) {
         displayNoResultsMessage(filterText);  // Afficher le message si aucune recette n'est trouvée

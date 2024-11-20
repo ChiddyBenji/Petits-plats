@@ -72,7 +72,7 @@ export default function displayRecipes(filteredRecipes) {
 
 // Fonction pour mettre à jour le nombre de recettes
 export function updateRecipeCount(filteredRecipes) {
-    console.log("Mise à jour du nombre de recettes :", filteredRecipes.length); // Log pour vérifier
+
     if (recipeCountElement) {
         recipeCountElement.textContent = `${filteredRecipes.length} recette${filteredRecipes.length > 1 ? 's' : ''} disponibles`;
     }
