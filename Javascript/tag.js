@@ -18,6 +18,7 @@ export function createTag(name) {
     closeIcon.addEventListener('click', () => {
         containTags.removeChild(tagDiv);
         applyMainFilter();
+        updateRecipeCount(filteredRecipes);
     });
 
     tagDiv.appendChild(tagName);
@@ -25,6 +26,7 @@ export function createTag(name) {
     containTags.appendChild(tagDiv);
 
     
-    applyMainFilter(); // Filtre les recettes lorsque le tag est créé
+    applyMainFilter();
+    updateRecipeCount(filteredRecipes); // Filtre les recettes lorsque le tag est créé
     
 }

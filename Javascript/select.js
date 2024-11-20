@@ -35,6 +35,7 @@ function populateOptionsForSelectBox(selectBox, uniqueValues) {
             // Met à jour les options des autres menus en cascade
             applyCascadeFilter();
             
+            
         });
         
         ul.appendChild(li);
@@ -96,6 +97,7 @@ function applyCascadeFilter() {
     }
 
     updateSelectOptions(filteredRecipes);
+    updateRecipeCount(filteredRecipes);
 }
 
 // Filtre les recettes en fonction du champ de recherche global
