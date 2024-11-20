@@ -1,6 +1,7 @@
 import recipes from "./recipes.js"; // Assurez-vous que les recettes sont importées
 import displayRecipes from "./recette.js"; // Assurez-vous que la fonction d'affichage est importée
 import {applyMainFilter} from "./filtre-recette.js";
+import { updateRecipeCount } from './recette.js';
 
 export function createTag(name) {
     const containTags = document.querySelector('.contain-tags');
@@ -17,7 +18,7 @@ export function createTag(name) {
 
     closeIcon.addEventListener('click', () => {
         containTags.removeChild(tagDiv);
-        applyMainFilter();
+        applyMainFilter();  // Applique à nouveau le filtrage après suppression du tag
         updateRecipeCount(filteredRecipes);
     });
 
@@ -25,8 +26,6 @@ export function createTag(name) {
     tagDiv.appendChild(closeIcon);
     containTags.appendChild(tagDiv);
 
-    
-    applyMainFilter();
-    updateRecipeCount(filteredRecipes); // Filtre les recettes lorsque le tag est créé
-    
+    applyMainFilter();  // Applique à nouveau le filtrage après création du tag
+    updateRecipeCount(filteredRecipes);
 }

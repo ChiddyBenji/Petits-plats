@@ -71,12 +71,14 @@ export default function displayRecipes(filteredRecipes) {
 }
 
 // Fonction pour mettre à jour le nombre de recettes
+// Exemple de la fonction updateRecipeCount
 export function updateRecipeCount(filteredRecipes) {
-    console.log("Mise à jour du nombre de recettes :", filteredRecipes.length); // Log pour vérifier
+    const recipeCountElement = document.querySelector('#recipe-count');
     if (recipeCountElement) {
-        recipeCountElement.textContent = `${filteredRecipes.length} recette${filteredRecipes.length > 1 ? 's' : ''} disponibles`;
+        recipeCountElement.textContent = ` ${filteredRecipes.length} recettes disponibles`;
     }
 }
+
 
 // Afficher les recettes initiales
 displayRecipes(recipes);
